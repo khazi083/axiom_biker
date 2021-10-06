@@ -1,0 +1,338 @@
+
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:id="@+id/scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="6"
+                android:layout_margin="5dp">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:paddingEnd="5dp"
+                    android:textColor="@color/lite_blue"
+                    android:textStyle="bold"
+                    android:text="Order Amount"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/order_amount"
+                    android:layout_width="0dp"
+                    android:layout_weight="4"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edittext_rect"
+                    android:padding="5dp"
+                    android:textSize="16sp"
+                    android:enabled="false"
+                    android:textColor="@android:color/black"
+                    />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="6"
+                android:layout_margin="5dp">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:paddingEnd="5dp"
+                    android:textColor="@color/lite_blue"
+                    android:textStyle="bold"
+                    android:text="Cust. Name"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/cust_name"
+                    android:layout_width="0dp"
+                    android:layout_weight="4"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edittext_rect"
+                    android:padding="5dp"
+                    android:textSize="16sp"
+                    android:enabled="false"
+                    android:textColor="@android:color/black"
+                    />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="6"
+                android:layout_margin="5dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:paddingEnd="5dp"
+                    android:text="Order No"
+                    android:textColor="@color/lite_blue"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/order_no"
+                    android:layout_width="0dp"
+                    android:layout_weight="4"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edittext_rect"
+                    android:enabled="false"
+                    android:padding="5dp"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="6"
+                android:layout_margin="5dp">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:paddingEnd="5dp"
+                    android:textColor="@color/lite_blue"
+                    android:textStyle="bold"
+                    android:text="Auth code"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/auth_no"
+                    android:layout_width="0dp"
+                    android:layout_weight="4"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/white_rect"
+                    android:padding="5dp"
+                    android:textSize="16sp"
+                    android:textColor="@android:color/black"
+                    />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="6"
+                android:layout_margin="5dp">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:paddingEnd="5dp"
+                    android:textColor="@color/lite_blue"
+                    android:textStyle="bold"
+                    android:text="Select Id type"
+                    android:textSize="16sp" />
+
+
+                <Spinner
+                    android:id="@+id/id_type"
+                    android:layout_width="0dp"
+                    android:layout_weight="4"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:background="@drawable/white_rect"
+                    android:entries="@array/idtype_array"
+                    android:prompt="@string/choose_id"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="6"
+                android:layout_margin="5dp">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:paddingEnd="5dp"
+                    android:textColor="@color/lite_blue"
+                    android:textStyle="bold"
+                    android:text="Id Name"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/id_name"
+                    android:layout_width="0dp"
+                    android:layout_weight="4"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/white_rect"
+                    android:padding="5dp"
+                    android:textSize="16sp"
+                    android:textColor="@android:color/black"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="6"
+                android:layout_margin="5dp">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:paddingEnd="5dp"
+                    android:textColor="@color/lite_blue"
+                    android:textStyle="bold"
+                    android:text="Id Number"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/id_number"
+                    android:layout_width="0dp"
+                    android:layout_weight="4"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/white_rect"
+                    android:padding="5dp"
+                    android:textSize="16sp"
+                    android:textColor="@android:color/black"
+                    />
+            </LinearLayout>
+
+
+
+
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:layout_gravity="bottom"
+                    android:text="Customer sign Below :"/>
+
+                <Button
+                    android:id="@+id/clear"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:textColor="@color/colorAccent"
+                    android:text="Clear Signature"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/signlayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="vertical"
+                android:gravity="center">
+
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="10dp"
+                android:paddingTop="20dp">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Upload Image 1 :"/>
+
+                <ImageView
+                    android:id="@+id/image1"
+                    android:layout_width="60dp"
+                    android:padding="5dp"
+                    android:layout_height="60dp"
+                    />
+
+                <Button
+                    android:id="@+id/btmimage1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Select Image"
+                    />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="10dp"
+                android:layout_marginBottom="50dp"
+                android:paddingTop="20dp">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Upload Image 2 :"/>
+
+                <ImageView
+                    android:id="@+id/image2"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:padding="5dp"
+                    />
+
+                <Button
+                    android:id="@+id/btmimage2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Select Image"
+                    />
+            </LinearLayout>
+
+
+            </LinearLayout>
+
+
+    </ScrollView>
+    <Button
+        android:id="@+id/upload"
+        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="20dp"
+        android:background="#d67601"
+        android:textSize="20sp"
+        android:text="save">
+
+    </Button>
+</RelativeLayout>
+

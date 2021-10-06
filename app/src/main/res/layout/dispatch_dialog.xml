@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="450dp"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:paddingBottom="10dp">
+
+        <TextView
+            android:id="@+id/txt_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/blue_shade2"
+            android:fontFamily="fonts/roboto_medium.ttf"
+            android:padding="10dp"
+            android:text="Assign Order:"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:src="@color/colorPrimaryDark"></ImageView>
+
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_gravity="center"
+           android:gravity="center"
+           android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/dispatchtype"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:text="Select Biker"
+            android:textSize="16sp"
+            android:layout_margin="15dp"
+            />
+
+           <Spinner
+               android:id="@+id/dispatchlist"
+               android:layout_width="300dp"
+               android:background="@drawable/rounded_edittext"
+               android:layout_margin="15dp"
+               android:layout_height="50dp"></Spinner>
+       </LinearLayout>
+
+        <Button
+            android:id="@+id/dispatch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Assign"
+            android:textColor="@color/black"
+            android:background="@color/bg_login"
+            android:drawableStart="@drawable/assign"
+            android:drawablePadding="5dp"
+            android:paddingStart="5dp"
+            android:paddingEnd="20dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:gravity="center"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+</LinearLayout>

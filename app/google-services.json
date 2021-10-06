@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "189607822550",
+    "firebase_url": "https://axiom-biker.firebaseio.com",
+    "project_id": "axiom-biker",
+    "storage_bucket": "axiom-biker.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:189607822550:android:626dfafbc99c831622b577",
+        "android_client_info": {
+          "package_name": "com.axiom.fulfillment"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "189607822550-juceujvhb3em5p4dj0cshpguf5861l7c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDurfpMQIh1hHFdupql9W1PSUgi0KNTHtQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "189607822550-juceujvhb3em5p4dj0cshpguf5861l7c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

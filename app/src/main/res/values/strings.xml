@@ -1,0 +1,77 @@
+
+<resources>
+    <string name="app_name">Axiom Biker</string>
+    //screen names
+    <string name="dispatch_screen">Ready to Dispatch</string>
+    <string name="AWB_screen">AWB Created</string>
+    <string name="Shipped_screen">Shipped orders</string>
+    <string name="Cancelled_screen">Cancelled orders</string>
+    <string name="Postponed_screen">Postponed orders</string>
+    <string name="Delivered_screen">Delivered orders</string>
+    <string name="PreOrder_screen">Pre orders</string>
+    <string name="InProcess_screen">In Process orders</string>
+    <string name="Pending_Screen">Pending RMO</string>
+    <string name="PendingReceving_Screen">Pending Receiving</string>
+    <string name="Posx_Screen">PosX Orders</string>
+    <string name="Picked_screen">Picked orders</string>
+    <string name="new_screen">New orders</string>
+    <string name="Order_Details">Order Details</string>
+    <string name="Order_Delivery">Order Delivery</string>
+    <string name="stock_check">ERP Stock Check</string>
+    <string name="price_check">Price Check</string>
+
+    <string name="nointernet">Internet connection not available</string>
+
+
+    // Login Screen
+    <string name="hint_email">Citrix Username</string>
+    <string name="hint_id">Citrix Employee ID</string>
+    <string name="hint_password">Password</string>
+    <string name="btn_login">LOGIN</string>
+    <string name="empty_username">Please enter user name</string>
+    <string name="empty_password">Please enter password</string>
+    <string name="verify_login">Verifing Login Credencials</string>
+    <string name="invalid_login">Invalid Login, please try again.</string>
+    <string name="api_fail">Api error, try again.</string>
+    <string name="pass">/@X1omT9266/$</string>
+
+
+    // Registration Screen
+    <string name="reg_title">Registration</string>
+    <string name="btn_register">Register</string>
+    <string name="new_reg">New Registration</string>
+    <string name="id_empty">Please enter citrix employee id.</string>
+    <string name="enter_details">Please enter all details.</string>
+    <string name="user_register">Registering User</string>
+    <string name="register_success">User Registered successfully.</string>
+    <string name="loading">Loading data</string>
+
+
+    //home screen
+    <string name="refersh">Refreshing data</string>
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+    <string name="logout">LOGOUT</string>
+    <string name="exit">You want to exit Application?</string>
+    <string name="choose_country">Select Country</string>
+    <string name="noorders">No orders to show</string>
+    <string-array name="country_array">
+    <item>Select Country</item>
+    <item>UAE</item>
+    <item>KSA</item>
+</string-array>
+
+    <string-array name="idtype_array">
+        <item>Select Id</item>
+        <item>Passport</item>
+        <item>Saudi iqama</item>
+    </string-array>
+
+    //order detailed screen
+    <string name="loading_bikers">Loading Axiom Biker</string>
+    <string name="loading_courier">Loading Courier Details</string>
+    <string name="default_notification_channel_id">1456</string>
+    <string name="adlocked">User is not valid in AD/Locked in AD</string>
+    <string name="fullfillerror">Please check if user is register and have access to fulfilment, Contact support team.</string>
+    <string name="choose_id">Select id</string>
+</resources>

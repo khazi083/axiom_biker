@@ -1,0 +1,228 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="5dp">
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:layout_gravity="center"
+            android:paddingEnd="5dp"
+            android:textColor="@color/lite_blue"
+            android:textStyle="bold"
+            android:text="Organization"
+            android:textSize="16sp" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/white_rect"
+            android:layout_marginStart="10dp">
+            <Spinner
+                android:id="@+id/org_list"
+                android:layout_width="400dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:padding="5dp"
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
+        </RelativeLayout>
+
+        <!--<Spinner-->
+            <!--android:id="@+id/org_list"-->
+            <!--android:layout_width="400dp"-->
+            <!--android:layout_height="40dp"-->
+            <!--android:layout_gravity="center"-->
+            <!--android:padding="5dp"-->
+            <!--android:background="@drawable/white_rect"-->
+            <!--android:layout_marginStart="10dp"-->
+            <!--android:textColor="@android:color/black"-->
+            <!--android:textSize="16sp" />-->
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp">
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:paddingEnd="5dp"
+            android:textColor="@color/lite_blue"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:text="Channel"
+            android:textSize="16sp" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/white_rect"
+            android:layout_marginStart="10dp">
+            <Spinner
+                android:id="@+id/channel"
+                android:layout_width="400dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:padding="5dp"
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp">
+
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:paddingEnd="5dp"
+            android:text="Location"
+            android:layout_gravity="center"
+            android:textColor="@color/lite_blue"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <AutoCompleteTextView
+            android:id="@+id/locationlist"
+            android:layout_width="400dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:padding="5dp"
+            android:hint="select location"
+            android:textColor="@android:color/black"
+            android:background="@drawable/white_rect"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:ems="10"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp">
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:paddingEnd="5dp"
+            android:textColor="@color/lite_blue"
+            android:textStyle="bold"
+            android:text="Item code"
+            android:textSize="16sp" />
+
+        <AutoCompleteTextView
+            android:id="@+id/itemcode"
+            android:layout_width="400dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:padding="5dp"
+            android:hint="enter Item desc"
+            android:textColor="@android:color/black"
+            android:background="@drawable/white_rect"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:ems="10"
+            android:textSize="14sp" />
+            />
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp">
+
+        <Button
+            android:id="@+id/stock_search"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:text="Search"
+            android:background="@color/bg_login"
+            android:textSize="14sp"
+            android:textColor="@color/black"/>
+
+        <Button
+            android:id="@+id/stock_clear"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginStart="50dp"
+            android:text="Clear"
+            android:background="@color/yellow"
+            android:textSize="14sp"
+            android:textColor="@color/black"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/stocksearchheader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingBottom="7dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="7dp"
+        android:layout_marginTop="10dp"
+        android:visibility="invisible"
+        android:weightSum="5">
+
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2.5"
+            android:text="Product Discription"
+            android:textColor="@color/black"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/pd_id"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.5"
+            android:text="Product Code/ItemID"
+            android:gravity="end"
+            android:textColor="@color/black"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/qty_price"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="end"
+            android:text="Quatity"
+            android:textColor="@color/black"
+            android:textSize="14sp" />
+
+
+    </LinearLayout>
+    <View
+        android:id="@+id/diver"
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:background="@color/gray_shade3" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/stock_itemList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp" />
+</LinearLayout>
