@@ -90,7 +90,7 @@ public class BaseActivity extends AppCompatActivity {
         APIInterface apiService = APIClient.gettoken().create(APIInterface.class);
         userpref = new UserSharedPreferences(ctx);
         try {
-            Call<tokenresponse> stringCall = apiService.getaccesstoken("password", "ecom_infibeam","@X1omT9266$");
+            Call<tokenresponse> stringCall = apiService.getaccesstoken("password", userpref.getKeyUserCode(),userpref.getKeyPassword());
 
         stringCall.enqueue(new Callback<tokenresponse>() {
             @Override
@@ -114,13 +114,12 @@ public class BaseActivity extends AppCompatActivity {
     }
 
 
-
-    public void getTokenforpod(Context ctx)  {
+    public void getTokenforpod(final Context ctx)  {
 
         APIInterface apiService = APIClient.gettokenforpod().create(APIInterface.class);
         userpref = new UserSharedPreferences(ctx);
         try {
-            Call<tokenresponse> stringCall = apiService.getaccesstoken("password", "ecom_infibeam", "@X1omT9266$");
+            Call<tokenresponse> stringCall = apiService.getaccesstoken("password", userpref.getKeyUserCode(),userpref.getKeyPassword());
             stringCall.enqueue(new Callback<tokenresponse>() {
                 @Override
                 public void onResponse(Call<tokenresponse> call, Response<tokenresponse> response) {
@@ -130,6 +129,9 @@ public class BaseActivity extends AppCompatActivity {
 //                    userpref.setKeyTokenExpiry(String.valueOf(responseString.getExpiresIn()));
 //                    String temp=Calendar.getInstance().getTime().toString();
 //                    userpref.setKeyTokenTime(temp);
+                    }
+                    else{
+                        ShowToast("Token expired",ctx);
                     }
 
                 }

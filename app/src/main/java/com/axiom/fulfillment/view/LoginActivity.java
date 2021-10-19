@@ -1,5 +1,6 @@
 package com.axiom.fulfillment.view;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
 import androidx.appcompat.app.ActionBar;
@@ -19,6 +20,7 @@ import com.axiom.fulfillment.helper.UserSharedPreferences;
 import com.axiom.fulfillment.model.UserLogin;
 import com.axiom.fulfillment.model.UserLoginResponse;
 import com.axiom.fulfillment.model.deviceDetails;
+import com.axiom.fulfillment.model.tokenresponse;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.analytics.FirebaseAnalytics;
@@ -43,7 +45,6 @@ public class LoginActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.new_login);
-        getToken(this);
         username = findViewById(R.id.email);
         password = findViewById(R.id.password);
         login = findViewById(R.id.btnLogin);
@@ -60,8 +61,8 @@ public class LoginActivity extends BaseActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                verifylogin();
-            }
+                getaccesstokennew();
+             }
         });
 
         new_reg.setOnClickListener(new View.OnClickListener() {
@@ -108,7 +109,8 @@ public class LoginActivity extends BaseActivity {
 
     }
 
-    private void verifylogin() {
+    private void getaccesstokennew() {
+
         if (username.getText().toString().isEmpty()) {
             Toast.makeText(this, R.string.empty_username, Toast.LENGTH_LONG).show();
             return;
@@ -120,6 +122,44 @@ public class LoginActivity extends BaseActivity {
             ShowToast(getString(R.string.nointernet), LoginActivity.this);
             return;
         }
+        userpref.setKeyPassword("");
+            APIInterface apiService = APIClient.gettoken().create(APIInterface.class);
+            userpref = new UserSharedPreferences(LoginActivity.this);
+            try {
+                Call<tokenresponse> stringCall = apiService.getaccesstoken("password", username.getText().toString(),password.getText().toString());
+                startLoader(getString(R.string.verify_login), LoginActivity.this);
+                stringCall.enqueue(new Callback<tokenresponse>() {
+                    @Override
+                    public void onResponse(Call<tokenresponse> call, Response<tokenresponse> response) {
+                        stopLoader();
+                        if (response.isSuccessful()) {
+                            tokenresponse responseString = response.body();
+                            userpref.setAccessToken(responseString.getAccessToken());
+                            verifylogin();
+//                    userpref.setKeyTokenExpiry(String.valueOf(responseString.getExpiresIn()));
+//                    String temp=Calendar.getInstance().getTime().toString();
+//                    userpref.setKeyTokenTime(temp);
+                        }
+                        else {
+                            ShowToast("Invalid user details",LoginActivity.this);
+                        }
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<tokenresponse> call, Throwable t) {
+                        stopLoader();
+                        ShowToast("User not valid",LoginActivity.this);
+                    }
+                });
+            }
+            catch (Exception e){
+                stopLoader();
+            }
+    }
+
+
+    private void verifylogin() {
 
         APIInterface apiService = new APIClient(this).getClient().create(APIInterface.class);
         UserLogin user = new UserLogin(username.getText().toString(), password.getText().toString());
@@ -127,6 +167,7 @@ public class LoginActivity extends BaseActivity {
         devinfo.setDeviceId(userpref.getfcmkey());
         if(!userpref.getfcmkey().isEmpty())
             user.setDeviceinfo(devinfo);
+        userpref.setKeyPassword(password.getText().toString());
         Call<UserLoginResponse> stringCall = apiService.loginapi(user);
         startLoader(getString(R.string.verify_login), this);
         stringCall.enqueue(new Callback<UserLoginResponse>() {
@@ -135,11 +176,13 @@ public class LoginActivity extends BaseActivity {
                try {
                    stopLoader();
                     if (!response.body().getIsValidDomainUser()) {
+                      userpref.setKeyPassword("");
                       ShowToast(getString(R.string.adlocked), LoginActivity.this);
-                       return;
+                      return;
                    }
 
                    else if (!response.body().getIsValiduser()) {
+                        userpref.setKeyPassword("");
                        if(response.body().getErrorMessage()!=null && !response.body().getErrorMessage().isEmpty() &&
                        !response.body().getErrorMessage().equalsIgnoreCase("null"))
                            ShowToast(response.body().getErrorMessage(),LoginActivity.this);
@@ -159,12 +202,18 @@ public class LoginActivity extends BaseActivity {
                        Intent home = new Intent(LoginActivity.this, HomeDrawerActivity.class);
                        startActivity(home);
                    }
-                   else if(response.body().getErrorMessage()!=null && !response.body().getErrorMessage().isEmpty())
-                       ShowToast(response.body().getErrorMessage(),LoginActivity.this);
-                   else
-                       ShowToast(getString(R.string.invalid_login), LoginActivity.this);
+                   else if(response.body().getErrorMessage()!=null && !response.body().getErrorMessage().isEmpty()) {
+                        userpref.setKeyPassword("");
+                       ShowToast(response.body().getErrorMessage(), LoginActivity.this);
+                    }
+                   else {
+                        userpref.setKeyPassword("");
+                        ShowToast(getString(R.string.invalid_login), LoginActivity.this);
+                    }
                }
                catch (Exception e){
+                   stopLoader();
+                   userpref.setKeyPassword("");
                    if(e.getMessage()!=null && !e.getMessage().isEmpty())
                         ShowToast(e.getMessage(), LoginActivity.this);
                 }
@@ -174,6 +223,7 @@ public class LoginActivity extends BaseActivity {
             @Override
             public void onFailure(Call<UserLoginResponse> call, Throwable t) {
                 stopLoader();
+                userpref.setKeyPassword("");
                 ShowToast(getString(R.string.api_fail), LoginActivity.this);
             }
         });

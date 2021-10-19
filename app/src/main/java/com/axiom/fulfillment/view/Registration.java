@@ -55,7 +55,6 @@ public class Registration extends BaseActivity {
             return;
         }
         getRoles();
-        getToken(this);
     }
 
     private void verifyentries() {

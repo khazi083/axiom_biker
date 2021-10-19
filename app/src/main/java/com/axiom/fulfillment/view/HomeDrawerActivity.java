@@ -109,7 +109,7 @@ public class HomeDrawerActivity extends BaseActivity {
         colchart = findViewById(R.id.colchart);
         backgraph = findViewById(R.id.backgraph);
         scanorder=findViewById(R.id.scan);
-
+        getToken(HomeDrawerActivity.this);
         scanorder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -442,18 +442,8 @@ public class HomeDrawerActivity extends BaseActivity {
                     generateData();
 
                 } else if (response.message().equalsIgnoreCase("unauthorized")) {
+                    Toast.makeText(HomeDrawerActivity.this, "Unauthorized, Please logout and try again.", Toast.LENGTH_LONG).show();
 
-                    startLoader(getString(R.string.loading), HomeDrawerActivity.this);
-                    getToken(HomeDrawerActivity.this);
-                    final Handler handler = new Handler();
-                    handler.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            getDashBoarddata();
-                            getmenuList();
-
-                        }
-                    }, 3000);
                 } else
                     Toast.makeText(HomeDrawerActivity.this, response.message(), Toast.LENGTH_SHORT).show();
 

@@ -23,6 +23,7 @@ public class UserSharedPreferences {
     private static final String KEY_USER_ROLE = "userrole";
     private static final String KEY_FCM= "fcmkey";
     private static final String KEY_COUNTRY_CODE= "countrycode";
+    private static final String KEY_PASSWORD= "password";
 
 
     public String getKeyCountryCode() {
@@ -33,6 +34,17 @@ public class UserSharedPreferences {
         editor.putString(KEY_COUNTRY_CODE, countryCode);
         editor.commit();
     }
+
+    public  String getKeyPassword() {
+        return pref.getString(KEY_PASSWORD, "");
+
+    }
+
+    public void setKeyPassword(String pass) {
+        editor.putString(KEY_PASSWORD, pass);
+        editor.commit();
+    }
+
 
     public String getKeyUserRole() {
         return pref.getString(KEY_USER_ROLE, "");
