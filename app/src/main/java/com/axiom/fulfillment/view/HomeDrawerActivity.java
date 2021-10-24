@@ -172,7 +172,11 @@ public class HomeDrawerActivity extends BaseActivity {
 
                 if (expandableListTitle.get(groupPosition).equalsIgnoreCase(getString(R.string.logout))) {
                     upref.clearSession();
+                    Toast.makeText(HomeDrawerActivity.this, "User logged out.", Toast.LENGTH_LONG).show();
                     finish();
+                    Intent login = new Intent(HomeDrawerActivity.this, LoginActivity.class);
+                    login.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(login);
                 }
 
             }
@@ -442,7 +446,12 @@ public class HomeDrawerActivity extends BaseActivity {
                     generateData();
 
                 } else if (response.message().equalsIgnoreCase("unauthorized")) {
-                    Toast.makeText(HomeDrawerActivity.this, "Unauthorized, Please logout and try again.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(HomeDrawerActivity.this, "Session Expired, Please Login again.", Toast.LENGTH_LONG).show();
+                    upref.clearSession();
+                    finish();
+                    Intent login = new Intent(HomeDrawerActivity.this, LoginActivity.class);
+                    login.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(login);
 
                 } else
                     Toast.makeText(HomeDrawerActivity.this, response.message(), Toast.LENGTH_SHORT).show();
@@ -468,16 +477,19 @@ public class HomeDrawerActivity extends BaseActivity {
         stringCall.enqueue(new Callback<menuitems>() {
             @Override
             public void onResponse(Call<menuitems> call, Response<menuitems> response) {
+                stopLoader();
                 if (response.isSuccessful()) {
                     List<menu> menu = response.body().getMenu();
                     ExpandableListDataPump(menu);
                 }
-
+                else
+                    ExpandableListDataPump();
             }
 
             @Override
             public void onFailure(Call<menuitems> call, Throwable t) {
                 stopLoader();
+                ExpandableListDataPump();
             }
         });
 
@@ -541,14 +553,26 @@ public class HomeDrawerActivity extends BaseActivity {
 
     }
 
+    private void ExpandableListDataPump() {
+        expandableListDetail = new LinkedHashMap<String, List<String>>();
+        List<String> temp1 = new ArrayList<>();
+        expandableListDetail.put(getString(R.string.logout), temp1);
+        expandableListDetail.put("Version "+BuildConfig.VERSION_NAME,temp1 );
+        expandableListTitle = new ArrayList<String>(expandableListDetail.keySet());
+        expandableListAdapter = new CustomExpandableListAdapter(this, expandableListTitle, expandableListDetail);
+        mDrawerList.setAdapter(expandableListAdapter);
+    }
+
     private void ExpandableListDataPump(List<menu> menu) {
         expandableListDetail = new LinkedHashMap<String, List<String>>();
-        for (int i = 0; i < menu.size(); i++) {
-            List<String> temp = new ArrayList<>();
-            for (int j = 0; j < menu.get(i).getDetailMenu().size(); j++) {
-                temp.add(menu.get(i).getDetailMenu().get(j).getDtlMenuFunction());
+        if(menu!=null) {
+            for (int i = 0; i < menu.size(); i++) {
+                List<String> temp = new ArrayList<>();
+                for (int j = 0; j < menu.get(i).getDetailMenu().size(); j++) {
+                    temp.add(menu.get(i).getDetailMenu().get(j).getDtlMenuFunction());
+                }
+                expandableListDetail.put(menu.get(i).getHeadMenuDesc(), temp);
             }
-            expandableListDetail.put(menu.get(i).getHeadMenuDesc(), temp);
         }
         List<String> temp1 = new ArrayList<>();
         expandableListDetail.put(getString(R.string.logout), temp1);

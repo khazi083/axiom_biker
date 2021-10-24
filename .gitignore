@@ -11,3 +11,4 @@
 .externalNativeBuild
 /app/src/androidTest
 /.idea
+/app/release
